@@ -81,9 +81,10 @@
     (when graphite-enabled?
       (.start graphite-reporter graphite-post-interval graphite-post-unit))))
 
-(defn version
-  [service-name]
-  (let [pom-path (format "META-INF/maven/%s/%s/pom.properties" service-name service-name)]
-    (if-let [path (.getResource (ClassLoader/getSystemClassLoader) pom-path)]
-      ((read-file-to-properties path) "version")
-      "development")))
+(def version
+  (memoize
+   (fn [service-name]
+     (let [pom-path (format "META-INF/maven/%s/%s/pom.properties" service-name service-name)]
+       (if-let [path (.getResource (ClassLoader/getSystemClassLoader) pom-path)]
+         ((read-file-to-properties path) "version")
+         "development")))))
