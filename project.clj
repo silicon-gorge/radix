@@ -1,4 +1,4 @@
-(defproject mixradio/radix "1.0.2"
+(defproject mixradio/radix "1.0.3-SNAPSHOT"
   :description "A Clojure library providing the root functionality for web services"
   :license "https://github.com/mixradio/radix/blob/master/LICENSE"
   :url "https://github.com/mixradio/radix"
