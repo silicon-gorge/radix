@@ -39,7 +39,7 @@
   (Boolean/valueOf (env :production "false")))
 
 (def threads
-  (Integer/valueOf (env :threads "100")))
+  (Integer/valueOf (env :threads "254")))
 
 (def graphite-defaults
   {:graphite-enabled? graphite-enabled?
