@@ -11,34 +11,34 @@
            [java.util.logging LogManager]
            [org.slf4j.bridge SLF4JBridgeHandler]))
 
-(def graphite-enabled?
+(def ^:dynamic graphite-enabled?
   (Boolean/valueOf (env :graphite-enabled "false")))
 
-(def graphite-host
+(def ^:dynamic graphite-host
   (env :graphite-host))
 
-(def graphite-port
+(def ^:dynamic graphite-port
   (Integer/valueOf (env :graphite-port "2003")))
 
-(def graphite-post-interval
+(def ^:dynamic graphite-post-interval
   (Integer/valueOf (env :graphite-post-interval "60")))
 
-(def graphite-post-unit
+(def ^:dynamic graphite-post-unit
   (TimeUnit/valueOf (env :graphite-post-unit "SECONDS")))
 
-(def graphite-prefix
+(def ^:dynamic graphite-prefix
   (env :graphite-prefix))
 
-(def service-port
+(def ^:dynamic service-port
   (Integer/valueOf (env :service-port "8080")))
 
-(def shutdown-timeout
+(def ^:dynamic shutdown-timeout
   (Integer/valueOf (env :shutdown-timeout-millis "5000")))
 
-(def production?
+(def ^:dynamic production?
   (Boolean/valueOf (env :production "false")))
 
-(def threads
+(def ^:dynamic threads
   (Integer/valueOf (env :threads "254")))
 
 (def graphite-defaults
