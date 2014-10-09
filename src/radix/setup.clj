@@ -3,7 +3,7 @@
             [clojure.string :as str]
             [environ.core :refer [env]]
             [metrics.jvm.core :refer [instrument-jvm]]
-            [metrics.reporters.graphite :refer [reporter]])
+            [metrics.reporters.graphite :as graphite])
   (:import [java.io Reader]
            [java.net InetAddress UnknownHostException]
            [java.util Properties]
@@ -20,11 +20,8 @@
 (def ^:dynamic graphite-port
   (Integer/valueOf (env :graphite-port "2003")))
 
-(def ^:dynamic graphite-post-interval
-  (Integer/valueOf (env :graphite-post-interval "60")))
-
-(def ^:dynamic graphite-post-unit
-  (TimeUnit/valueOf (env :graphite-post-unit "SECONDS")))
+(def ^:dynamic graphite-post-interval-seconds
+  (Integer/valueOf (env :graphite-post-interval-seconds "60")))
 
 (def ^:dynamic graphite-prefix
   (env :graphite-prefix))
@@ -45,8 +42,7 @@
   {:graphite-enabled? graphite-enabled?
    :graphite-host graphite-host
    :graphite-port graphite-port
-   :graphite-post-interval graphite-post-interval
-   :graphite-post-unit graphite-post-unit
+   :graphite-post-interval-seconds graphite-post-interval-seconds
    :graphite-prefix graphite-prefix})
 
 (defn read-file-to-properties
@@ -73,13 +69,13 @@
 (defn start-graphite-reporting
   [& [options]]
   (instrument-jvm)
-  (let [{:keys [graphite-enabled? graphite-host graphite-port graphite-post-interval
-                graphite-post-unit graphite-prefix]} (merge graphite-defaults options)
-        graphite-reporter (reporter {:host graphite-host
-                                     :port graphite-port
-                                     :prefix graphite-prefix})]
+  (let [{:keys [graphite-enabled? graphite-host graphite-port
+                graphite-post-interval-seconds graphite-prefix]} (merge graphite-defaults options)
+        graphite-reporter (graphite/reporter {:host graphite-host
+                                              :port graphite-port
+                                              :prefix graphite-prefix})]
     (when graphite-enabled?
-      (.start graphite-reporter graphite-post-interval graphite-post-unit))))
+      (graphite/start graphite-reporter graphite-post-interval-seconds))))
 
 (def version
   (memoize
