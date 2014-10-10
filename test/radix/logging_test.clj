@@ -1,10 +1,8 @@
 (ns radix.logging-test
-  (:require [clojure.test :refer :all]
-            [midje.sweet :refer :all]
+  (:require [midje.sweet :refer :all]
             [radix.logging :refer :all]))
 
-(deftest wrap-log-details-middleware
-
+(fact-group
   (fact "Middleware sets request attributes into MDC"
         (let [request {:uri "/example"}
               mdc (atom nil)

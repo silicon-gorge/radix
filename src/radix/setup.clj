@@ -38,6 +38,9 @@
 (def ^:dynamic threads
   (Integer/valueOf (env :threads "254")))
 
+(def ^:dynamic auto-reload?
+  (Boolean/valueOf (env :auto-reload "false")))
+
 (def graphite-defaults
   {:graphite-enabled? graphite-enabled?
    :graphite-host graphite-host

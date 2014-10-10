@@ -9,6 +9,7 @@
                  [metrics-clojure-graphite "2.3.0"]
                  [metrics-clojure-jvm "2.3.0"]
                  [metrics-clojure-ring "2.3.0"]
+                 [ns-tracker "0.2.2"]
                  [org.clojure/tools.logging "0.3.1"]
                  [org.slf4j/slf4j-api "1.7.7"]
                  [org.slf4j/jcl-over-slf4j "1.7.7"]
