@@ -4,6 +4,18 @@
   (:import [java.util.concurrent TimeUnit]
            [java.util.regex Pattern]))
 
+;; When collecting metrics for resources in an application, it's not sensible to
+;; collect values that change on every request, for example if the path for a
+;; particular request contains user ids or some other attribute with a range of
+;; values. So, the purpose of this namespace is to allow such values to be grouped.
+;; The middleware function `wrap-per-resource-metrics` allows aggregation for metrics
+;; so that a resource like `/{territory}/users/{a guid}/credit` doesn't produce
+;; thousands of metrics paths one for each combination of territory and guid; instead
+;; any calls to this resource will result in metrics on the path `/TERRITORIES/users/GUID/credit`.
+;;
+;; There are some default replacements in this namespace. If you want others, you
+;; can just create your own and call the customisable version of `wrap-pre-resource-metrics`.
+
 (def replace-guid
   [#"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" "GUID"])
 

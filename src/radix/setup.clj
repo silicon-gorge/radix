@@ -11,6 +11,9 @@
            [java.util.logging LogManager]
            [org.slf4j.bridge SLF4JBridgeHandler]))
 
+;; This namespace contains a number of settings that can be configured for a service
+;; as well as some useful standard setup functions.
+
 (def ^:dynamic graphite-enabled?
   (Boolean/valueOf (env :graphite-enabled "false")))
 

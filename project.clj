@@ -18,5 +18,6 @@
 
   :profiles {:dev {:dependencies [[ch.qos.logback/logback-classic "1.1.2"]
                                   [midje "1.6.3"]]
-                   :plugins [[lein-midje "3.1.3"]]}
+                   :plugins [[lein-midje "3.1.3"]
+                             [lein-marginalia "0.8.0"]]}
              :provided {:dependencies [[org.clojure/clojure "1.6.0"]]}})

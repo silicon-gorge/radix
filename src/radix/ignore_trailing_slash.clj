@@ -18,7 +18,7 @@ string."
     uri))
 
 (defn wrap-ignore-trailing-slash
-  "Makes routes match regardless of whether or not a uri ends in a slash."
+  "A middleware function to make routes match regardless of whether or not a uri ends in a slash."
   [handler]
   (fn [request]
     (let [rewrite (uri-snip-slash (:uri request))]

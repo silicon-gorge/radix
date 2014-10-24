@@ -6,7 +6,7 @@
 (def ^:const logged-headers #{"x-forwarded-for" "user-agent"})
 
 (defn wrap-log-details
-  "A middleware function to add useful request details to the logging context"
+  "A middleware function to add useful request details to the logging context."
   [handler]
   (fn [request]
     (with-logging-context (merge (select-keys request logged-request-attributes)
