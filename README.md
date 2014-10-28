@@ -1,6 +1,10 @@
 # radix
 
-A Clojure library providing the root functionality for web services
+A Clojure library providing the root functionality for web services.
+
+[![Clojars Project](http://clojars.org/mixradio/radix/latest-version.svg)](http://clojars.org/mixradio/radix)
+
+Latest release [documentation](http://mixradio.github.io/radix/uberdoc.html).
 
 ## License
 
