@@ -7,6 +7,7 @@ lein marg
 git add docs
 lein vcs commit
 git tag `cat project.clj | grep defproject | cut -d" " -f 3 | tr -d "\""` # I'm actually pretty happy with this
+git push origin :gh-pages
 git subtree push --prefix docs origin gh-pages
 lein deploy clojars
 lein change version leiningen.release/bump-version
