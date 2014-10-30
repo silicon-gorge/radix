@@ -3,7 +3,8 @@
             [io.clj.logging :refer [with-logging-context]]
             [radix
              [logging :refer [wrap-log-details]]
-             [setup :as setup]])
+             [setup :as setup]]
+            [slingshot.slingshot :refer [try+ throw+]])
   (:import [clojure.lang ExceptionInfo]
            [java.io PrintWriter StringWriter]))
 
@@ -23,16 +24,30 @@
   ([^Exception e]
      (error-response (error-message e) 500))
   ([message status]
+     (error-response message status "error"))
+  ([message status type]
      {:status status
       :headers {"Content-Type" "application/json"}
       :body {:message message
              :status status
-             :type "error"}}))
+             :type type}}))
 
 (defn id-error-response
   "Create a json-format response with a specific id included in the body."
   [^Exception e id]
   (assoc-in (error-response e) [:body :id] id))
+
+(defn throw-bad-request
+  [& [message]]
+  (throw+ {:type ::badrequest :message message}))
+
+(defn throw-conflict
+  [& [message]]
+  (throw+ {:type ::conflict :message message}))
+
+(defn throw-not-found
+  [& [message]]
+  (throw+ {:type ::notfound :message message}))
 
 (defn wrap-error-handling
   "A middleware function to catch and log uncaught exceptions, then return a nice json response to the client"
@@ -48,3 +63,19 @@
              (with-logging-context (merge {:request-time request-time :log-id log-id} (ex-data e))
                (error e)
                (id-error-response e log-id)))))))))
+
+(defn wrap-client-errors
+  "Middleware function to deal with client errors in a consistent and simple manner: put this
+  function into the ring application's middleware chain and simply use the functions
+  `throw-bad-request`, `throw-conflict` and `throw-not-found` whereever you want a 40x error
+  returned to the caller. Note that these error response are not logged."
+  [handler]
+  (fn [req]
+    (try+
+     (handler req)
+     (catch [:type ::conflict] {:keys [message]}
+       (error-response (or message "Conflict") 409 "conflict"))
+     (catch [:type ::badrequest] {:keys [message]}
+       (error-response (or message "Bad request") 400 "badrequest"))
+     (catch [:type ::notfound] {:keys [message]}
+       (error-response (or message "Resource not found") 404 "notfound")))))
