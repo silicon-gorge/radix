@@ -2865,14 +2865,15 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>mixradio/radix -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://github.com/mixradio/radix">mixradio/radix</a></h1><h2 class="project-version">1.0.8</h2><br /><p>A Clojure library providing the root functionality for web services</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">environ</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0</td></tr><tr><td class="dep-name">io.clj/logging</td><td class="dotted"><hr /></td><td class="dep-version">0.8.1</td></tr><tr><td class="dep-name">metrics-clojure</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">metrics-clojure-graphite</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">metrics-clojure-jvm</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">metrics-clojure-ring</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">ns-tracker</td><td class="dotted"><hr /></td><td class="dep-version">0.2.2</td></tr><tr><td class="dep-name">org.clojure/tools.logging</td><td class="dotted"><hr /></td><td class="dep-version">0.3.1</td></tr><tr><td class="dep-name">org.slf4j/slf4j-api</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr><tr><td class="dep-name">org.slf4j/jcl-over-slf4j</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr><tr><td class="dep-name">org.slf4j/jul-to-slf4j</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr><tr><td class="dep-name">org.slf4j/log4j-over-slf4j</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#radix.error">radix.error</a></li><li><a href="#radix.ignore-trailing-slash">radix.ignore-trailing-slash</a></li><li><a href="#radix.logging">radix.logging</a></li><li><a href="#radix.reload">radix.reload</a></li><li><a href="#radix.ring-metrics">radix.ring-metrics</a></li><li><a href="#radix.setup">radix.setup</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#radix.error" name="radix.error"><h1 class="project-name">radix.error</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</script><title>mixradio/radix -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://github.com/mixradio/radix">mixradio/radix</a></h1><h2 class="project-version">1.0.9</h2><br /><p>A Clojure library providing the root functionality for web services</p>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">environ</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0</td></tr><tr><td class="dep-name">io.clj/logging</td><td class="dotted"><hr /></td><td class="dep-version">0.8.1</td></tr><tr><td class="dep-name">metrics-clojure</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">metrics-clojure-graphite</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">metrics-clojure-jvm</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">metrics-clojure-ring</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr><tr><td class="dep-name">ns-tracker</td><td class="dotted"><hr /></td><td class="dep-version">0.2.2</td></tr><tr><td class="dep-name">org.clojure/tools.logging</td><td class="dotted"><hr /></td><td class="dep-version">0.3.1</td></tr><tr><td class="dep-name">org.slf4j/slf4j-api</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr><tr><td class="dep-name">org.slf4j/jcl-over-slf4j</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr><tr><td class="dep-name">org.slf4j/jul-to-slf4j</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr><tr><td class="dep-name">org.slf4j/log4j-over-slf4j</td><td class="dotted"><hr /></td><td class="dep-version">1.7.7</td></tr><tr><td class="dep-name">slingshot</td><td class="dotted"><hr /></td><td class="dep-version">0.11.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#radix.error">radix.error</a></li><li><a href="#radix.ignore-trailing-slash">radix.ignore-trailing-slash</a></li><li><a href="#radix.logging">radix.logging</a></li><li><a href="#radix.reload">radix.reload</a></li><li><a href="#radix.ring-metrics">radix.ring-metrics</a></li><li><a href="#radix.setup">radix.setup</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#radix.error" name="radix.error"><h1 class="project-name">radix.error</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns radix.error
   (:require [clojure.tools.logging :refer [error]]
             [io.clj.logging :refer [with-logging-context]]
             [radix
              [logging :refer [wrap-log-details]]
-             [setup :as setup]])
+             [setup :as setup]]
+            [slingshot.slingshot :refer [try+ throw+]])
   (:import [clojure.lang ExceptionInfo]
            [java.io PrintWriter StringWriter]))</pre></td></tr><tr><td class="docs"><p>Obtain an error message from an exception. In production mode, this is just the error's message;
   in non-production mode the much more detailed stack trace is used.</p>
@@ -2888,14 +2889,25 @@ net.brehaut.ClojureTools = (function (SH) {
   ([^Exception e]
      (error-response (error-message e) 500))
   ([message status]
+     (error-response message status &quot;error&quot;))
+  ([message status type]
      {:status status
       :headers {&quot;Content-Type&quot; &quot;application/json&quot;}
       :body {:message message
              :status status
-             :type &quot;error&quot;}}))</pre></td></tr><tr><td class="docs"><p>Create a json-format response with a specific id included in the body.</p>
+             :type type}}))</pre></td></tr><tr><td class="docs"><p>Create a json-format response with a specific id included in the body.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn id-error-response
   [^Exception e id]
-  (assoc-in (error-response e) [:body :id] id))</pre></td></tr><tr><td class="docs"><p>A middleware function to catch and log uncaught exceptions, then return a nice json response to the client</p>
+  (assoc-in (error-response e) [:body :id] id))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn throw-bad-request
+  [&amp; [message]]
+  (throw+ {:type ::badrequest :message message}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn throw-conflict
+  [&amp; [message]]
+  (throw+ {:type ::conflict :message message}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn throw-not-found
+  [&amp; [message]]
+  (throw+ {:type ::notfound :message message}))</pre></td></tr><tr><td class="docs"><p>A middleware function to catch and log uncaught exceptions, then return a nice json response to the client</p>
 </td><td class="codes"><pre class="brush: clojure">(defn wrap-error-handling
   [handler]
   (wrap-log-details
@@ -2908,7 +2920,21 @@ net.brehaut.ClojureTools = (function (SH) {
                  log-id (str (java.util.UUID/randomUUID))]
              (with-logging-context (merge {:request-time request-time :log-id log-id} (ex-data e))
                (error e)
-               (id-error-response e log-id)))))))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#radix.ignore-trailing-slash" name="radix.ignore-trailing-slash"><h1 class="project-name">radix.ignore-trailing-slash</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+               (id-error-response e log-id)))))))))</pre></td></tr><tr><td class="docs"><p>Middleware function to deal with client errors in a consistent and simple manner: put this
+  function into the ring application's middleware chain and simply use the functions
+  <code>throw-bad-request</code>, <code>throw-conflict</code> and <code>throw-not-found</code> whereever you want a 40x error
+  returned to the caller. Note that these error response are not logged.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn wrap-client-errors
+  [handler]
+  (fn [req]
+    (try+
+     (handler req)
+     (catch [:type ::conflict] {:keys [message]}
+       (error-response (or message &quot;Conflict&quot;) 409 &quot;conflict&quot;))
+     (catch [:type ::badrequest] {:keys [message]}
+       (error-response (or message &quot;Bad request&quot;) 400 &quot;badrequest&quot;))
+     (catch [:type ::notfound] {:keys [message]}
+       (error-response (or message &quot;Resource not found&quot;) 404 &quot;notfound&quot;)))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#radix.ignore-trailing-slash" name="radix.ignore-trailing-slash"><h1 class="project-name">radix.ignore-trailing-slash</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns radix.ignore-trailing-slash)</pre></td></tr><tr><td class="docs"><p>Removes the last character of string, does nothing on a zero-length
 string.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- #^String chop
