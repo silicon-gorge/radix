@@ -13,9 +13,9 @@
                                         :body {:message "hello" :status 300 :type "error"}})
 
  (fact "error response builds json with message, status and type"
-       (error-response "hello" 123 "type") => {:status 123
-                                               :headers {"Content-Type" "application/json"}
-                                               :body {:message "hello" :status 123 :type "type"}})
+       (error-response "hello" 123) => {:status 123
+                                        :headers {"Content-Type" "application/json"}
+                                        :body {:message "hello" :status 123 :type "error"}})
 
  (fact "error response builds json with exception"
        (let [response (error-response (Exception. "hello"))
@@ -91,7 +91,7 @@
          (:status response) => 400
          (:body response) => {:status 400
                               :message ..message..
-                              :type "badrequest"}))
+                              :type "error"}))
 
  (fact "error of type conflict is trapped and response is generated"
        (let [handler (fn [req] (throw-conflict ..message..))
@@ -99,7 +99,7 @@
          (:status response) => 409
          (:body response) => {:status 409
                               :message ..message..
-                              :type "conflict"}))
+                              :type "error"}))
 
  (fact "error of type notfound with no message is trapped and response is generated"
        (let [handler (fn [req] (throw-not-found))
@@ -107,4 +107,4 @@
          (:status response) => 404
          (:body response) => {:status 404
                               :message "Resource not found"
-                              :type "notfound"})))
+                              :type "error"})))

@@ -24,13 +24,11 @@
   ([^Exception e]
      (error-response (error-message e) 500))
   ([message status]
-     (error-response message status "error"))
-  ([message status type]
      {:status status
       :headers {"Content-Type" "application/json"}
       :body {:message message
              :status status
-             :type type}}))
+             :type "error"}}))
 
 (defn id-error-response
   "Create a json-format response with a specific id included in the body."
@@ -74,8 +72,8 @@
     (try+
      (handler req)
      (catch [:type ::conflict] {:keys [message]}
-       (error-response (or message "Conflict") 409 "conflict"))
+       (error-response (or message "Conflict") 409))
      (catch [:type ::badrequest] {:keys [message]}
-       (error-response (or message "Bad request") 400 "badrequest"))
+       (error-response (or message "Bad request") 400))
      (catch [:type ::notfound] {:keys [message]}
-       (error-response (or message "Resource not found") 404 "notfound")))))
+       (error-response (or message "Resource not found") 404)))))
