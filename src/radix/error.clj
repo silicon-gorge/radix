@@ -35,6 +35,10 @@
   [^Exception e id]
   (assoc-in (error-response e) [:body :id] id))
 
+(defn throw-error-response
+  [message status & [props]]
+  (throw+ {:type ::error :message message :status status :props props}))
+
 (defn throw-bad-request
   [& [message]]
   (throw+ {:type ::badrequest :message message}))
@@ -76,4 +80,6 @@
      (catch [:type ::badrequest] {:keys [message]}
        (error-response (or message "Bad request") 400))
      (catch [:type ::notfound] {:keys [message]}
-       (error-response (or message "Resource not found") 404)))))
+       (error-response (or message "Resource not found") 404))
+     (catch [:type ::error] {:keys [message status props]}
+       (update-in (error-response message status) [:body] merge props)))))

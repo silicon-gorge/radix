@@ -107,4 +107,20 @@
          (:status response) => 404
          (:body response) => {:status 404
                               :message "Resource not found"
-                              :type "error"})))
+                              :type "error"}))
+
+ (fact "generic error type is trapped and response is generated"
+       (let [handler (fn [req] (throw-error-response ..message.. ..status..))
+             response ((wrap-client-errors handler) {})]
+         (:status response) => ..status..
+         (:body response) => {:status ..status..
+                              :message ..message..
+                              :type "error"}))
+
+ (fact "generic error type supports arbitrary additional properties"
+       (let [handler (fn [req] (throw-error-response ..message.. ..status.. {:k "v"}))
+             response ((wrap-client-errors handler) {})]
+         (:body response) => {:status ..status..
+                              :message ..message..
+                              :type "error"
+                              :k "v"})))
