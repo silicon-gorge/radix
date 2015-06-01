@@ -52,8 +52,10 @@
   (throw+ {:type ::notfound :message message}))
 
 (defn wrap-error-handling
-  "A middleware function to catch and log uncaught exceptions, then return a nice json response to the client"
-  [handler]
+  "A middleware function to catch and log uncaught exceptions, then return a nice json response to the client. If you
+  want to modify the logging context you can pass in an optional context-modifier function which accepts a map that
+  it can modify and then return."
+  [handler & [context-modifier]]
   (wrap-log-details
    (fn [request]
      (let [start (System/currentTimeMillis)]
@@ -61,8 +63,9 @@
          (handler request)
          (catch Throwable e
            (let [request-time (- (System/currentTimeMillis) start)
-                 log-id (str (java.util.UUID/randomUUID))]
-             (with-logging-context (merge {:request-time request-time :log-id log-id} (ex-data e))
+                 log-id (str (java.util.UUID/randomUUID))
+                 context-modifier (or context-modifier identity)]
+             (with-logging-context (context-modifier (merge {:request-time request-time :log-id log-id} (ex-data e)))
                (error e)
                (id-error-response e log-id)))))))))
 
