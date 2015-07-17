@@ -15,7 +15,8 @@
                  [org.slf4j/jcl-over-slf4j "1.7.12"]
                  [org.slf4j/jul-to-slf4j "1.7.12"]
                  [org.slf4j/log4j-over-slf4j "1.7.12"]
-                 [slingshot "0.12.2"]]
+                 [slingshot "0.12.2"]
+                 [sonian/carica "1.1.0"]]
 
   :profiles {:dev {:dependencies [[ch.qos.logback/logback-classic "1.1.3"]
                                   [midje "1.6.3"]]
