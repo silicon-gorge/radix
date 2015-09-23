@@ -66,7 +66,7 @@
                  log-id (str (java.util.UUID/randomUUID))
                  context-modifier (or context-modifier identity)]
              (with-logging-context (context-modifier (merge {:request-time request-time :log-id log-id} (ex-data e)))
-               (error e)
+               (error e (.getMessage e))
                (id-error-response e log-id)))))))))
 
 (defn wrap-client-errors
