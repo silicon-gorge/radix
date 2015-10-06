@@ -1,7 +1,7 @@
 (ns radix.setup
   (:require [clojure.java.io :as io]
             [clojure.string :as str]
-            [environ.core :refer [env]]
+            [radix.config :refer [env]]
             [metrics.jvm.core :refer [instrument-jvm]]
             [metrics.reporters.graphite :as graphite])
   (:import [java.io Reader]
