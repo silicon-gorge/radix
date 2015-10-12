@@ -1,0 +1,4 @@
+{:foo 1
+ :bar "baz"
+ :quux? true
+ :environments {:integration {:foo 2}}}
