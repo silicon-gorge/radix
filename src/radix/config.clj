@@ -86,6 +86,7 @@
   ([kw]
    (env kw nil))
   ([kw default]
-   (or (or (config kw)
-           (environ/env kw))
-       default)))
+   (let [config-val (config kw)]
+     (if (nil? config-val)
+       (environ/env kw default)
+       config-val))))

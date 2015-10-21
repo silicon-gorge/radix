@@ -35,19 +35,19 @@
         (env :foo) => ..configvalue..
         (provided
          (config :foo) => ..configvalue..
-         (environ/env :foo) => ..envvalue.. :times 0))
+         (environ/env :foo nil) => ..envvalue.. :times 0))
   
   (fact "env wrapper fn falls back to environ env vars"
         (env :foo) => ..envvalue..
         (provided
          (config :foo) => nil
-         (environ/env :foo) => ..envvalue..))
+         (environ/env :foo nil) => ..envvalue..))
   
   (fact "env wrapper fn defaults to provided value if none are found"
         (env :foo "default") => "default"
         (provided
          (config :foo) => nil
-         (environ/env :foo) => nil))
+         (environ/env :foo "default") => "default"))
 
   (fact "with-env-override overrides configs inside lexical scope"
         (config :foo) => 1
